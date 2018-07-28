@@ -1,0 +1,14 @@
+//buttons
+
+
+//texts
+
+
+//global classes
+.separator::after{
+  content: '|';
+  display: inline-block;
+  margin: 0 7px;
+  font-size: 0.9em;
+  color: #ccc;
+}

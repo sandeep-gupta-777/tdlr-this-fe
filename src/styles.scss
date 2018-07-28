@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap";
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import "sass/variables";
+
+:root{
+  --custom-rem: 10px;
+}
+
+body {
+  font-weight: 300;
+  padding-bottom: 100px;
+  background-color: white;
+}
+a{
+  color: black;
+}
+
+.square-40{
+  height: 40px;
+  width: 40px;
+}
+
+.tag{
+  border-radius: 100px;
+  padding: 5px  20px ;
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  border: 1px solid #ddd;
+}
+
+.border1{
+  border: 1px solid red;
+}
+
+.border-theme{
+  border: 1px solid #e8e8e8;
+}
+
+.btn-theme{
+  background-color: #e8e8e8;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 2px;
+  &:hover{
+    background-color: #d6d6d6;
+  }
+}
+
+/*TODO: too much code repetition here...check out later*/
+.btn-theme-primary {
+  background-color: #00abd3 !important;
+  border: none;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: white;
+  cursor: pointer;
+  &:hover{
+    background-color: #0291d2 !important;
+  }
+}
+
+.btn-theme-danger {
+  background-color: #e85656 !important;
+  border: none;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: white;
+  cursor: pointer;
+  &:hover{
+    background-color: #0291d2 !important;
+  }
+}
+
+.btn-theme-primary-outline {
+  background-color: white !important;
+  border-radius: 2px;
+  border: 1px solid;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: $color-primary;
+}
+
+.btn-theme-secondary-outline {
+  background-color: white !important;
+  border-radius: 2px;
+  border: 1px solid $color-secondary;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: $color-primary;
+}
+
+.btn-theme-success {
+  background-color: $color-success !important;
+  border: none;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: white;
+}
+
+.btn-theme-danger {
+  background-color: $color-danger !important;
+  border: none;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: white;
+}
+
+.btn-theme-danger-outline {
+  background-color: $color-danger !important;
+  border-radius: 2px;
+  border: 1px solid;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 32px !important;
+  font-size: $font-size-xs;
+  color: $color-primary;
+}

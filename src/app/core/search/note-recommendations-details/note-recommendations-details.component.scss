@@ -1,0 +1,19 @@
+@import "~src/sass/mixins";
+
+.thumbnail > img{
+  @include square(remy(60))
+}
+
+.title{
+  @include typography(remy(15), remy(15), 700 , #555)
+}
+.meta{
+  display: flex;
+  align-items: center;
+  @include typography(remy(13), remy(19), 300 , #bbb)
+
+}
+
+.view-count::after {
+  @include saperator();
+}

@@ -1,0 +1,16 @@
+@import "~src/sass/main";
+
+header{
+  nav{
+    padding: 20px 0px;
+  }
+}
+
+
+#search-box{
+  @include hide-borders();
+  background-color: transparent;
+  &:focus{
+    border-bottom: 1px solid black !important;
+  }
+}

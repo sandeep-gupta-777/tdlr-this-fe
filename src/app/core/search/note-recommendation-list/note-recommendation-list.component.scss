@@ -1,0 +1,14 @@
+@import "~src/sass/variables";
+@import "~src/sass/mixins";
+
+.container{
+  /*todo; fix this*/
+  border: 1px solid #eee;
+  padding-right: 20px;
+  padding-left: 30px;
+}
+
+
+.row > h1{
+  @include typography(remy(18), remy(15), 700 , #212529)
+}

@@ -1,0 +1,47 @@
+<header class="header">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">tdlrthis</a>
+
+      <div class="ml-auto" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item d-flex align-items-center">
+            <input id="search-box" type="text">
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><label for="search-box" class="fa fa-search"></label> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/core/create">Create</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+           <span dropdown style="position: relative">
+              <a href id="basic-link" dropdownToggle (click)="false"
+                 aria-controls="basic-link-dropdown"><i class="fa fa-user"></i> </a>
+              <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+                  role="menu" aria-labelledby="basic-link">
+                <li>
+                  <a class="dropdown-item" routerLink="/core/dashboard">Dashboard</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/core/setting">Setting</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink] ="['/auth','login']">Login</a>
+                </li>
+                <li (click)="logout()">
+                  <a class="dropdown-item">Logout</a>
+                </li>
+              </ul>
+            </span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

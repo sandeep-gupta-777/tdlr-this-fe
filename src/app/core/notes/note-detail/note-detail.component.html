@@ -1,0 +1,270 @@
+<!--<main class="post blog-post col-lg-8">-->
+<!---->
+<div class="container" *ngIf="(note$|async)?.body as note">
+  <div class="post-single">
+    <!--<div class="post-thumbnail"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>-->
+    <div class="post-details">
+
+      <h1 class="post-heading">{{note.note_title}}</h1>
+
+      <!--meta data starts-->
+      <div class="post-meta py-2 d-flex align-items-center flex-column flex-sm-row">
+        <a href="#" class="author d-flex align-items-center flex-wrap">
+          <div class="avatar mr-2">
+            <img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/avatar-1.jpg"
+                 alt="..." class=" rounded-circle square-40"></div>
+          <div class="title"><span>{{note.note_author_name}}</span></div>
+        </a>
+        <!---->
+        <div class="d-flex align-items-center flex-wrap">
+          <div class="date"><i class="fa fa-clock"></i>{{note.note_created|timeAgo}}</div>
+          <div class="views"><i class="fa fa-eye"></i> 500</div>
+          <div class="comments meta-last"><i class="fa fa-comment-o"></i>12</div>
+        </div>
+      </div>
+      <!--meta data ends-->
+
+      <div class="post-body my-2" [innerHtml]="note.note_body_html">
+
+      </div>
+      <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#"
+                                                                                                        class="tag">#Financial</a><a
+        href="#" class="tag">#Economy</a></div>
+
+      <!--navigation starts-->
+      <div class="posts-nav py-4 d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#"
+                                                                                                                class="prev-post text-left d-flex align-items-center">
+        <div class="icon prev mr-2 d-flex justify-content-center align-items-center">
+          <i class="fa fa-angle-left "></i>
+        </div>
+        <div class="text"><strong class="text-nav">Previous Post </strong>
+          <h6 class="nav-title">I Bought a Wedding Dress.</h6>
+        </div>
+      </a>
+        <a href="#" class="next-post text-right d-flex align-items-center justify-content-end">
+          <div class="text"><strong class="text-nav">Next Post </strong>
+            <h6 class="nav-title">I Bought a Wedding Dress.</h6>
+          </div>
+          <div class="icon next ml-2 d-flex justify-content-center align-items-center">
+            <i class="fa fa-angle-right"> </i></div>
+        </a>
+      </div>
+
+      <!--navigation ends-->
+      <!--comments start-->
+      <div class="post-comments">
+        <header>
+          <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
+        </header>
+        <div class="comment">
+          <div class="comment-header d-flex justify-content-between">
+            <div class="user d-flex align-items-center">
+              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
+                                            class="img-fluid square-40 rounded-circle"></div>
+              <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
+            </div>
+          </div>
+          <div class="comment-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+        <div class="comment">
+          <div class="comment-header d-flex justify-content-between">
+            <div class="user d-flex align-items-center">
+              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
+                                            class="img-fluid rounded-circle square-40"></div>
+              <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
+            </div>
+          </div>
+          <div class="comment-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+        <div class="comment">
+          <div class="comment-header d-flex justify-content-between">
+            <div class="user d-flex align-items-center">
+              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
+                                            class="img-fluid rounded-circle square-40"></div>
+              <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
+            </div>
+          </div>
+          <div class="comment-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+      </div>
+      <div class="add-comment">
+        <header>
+          <h3 class="h6">Leave a reply</h3>
+        </header>
+        <form action="#" class="commenting-form">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <input type="text" name="username" id="username" placeholder="Name" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)"
+                     class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+              <textarea name="usercomment" id="usercomment" placeholder="Type your comment"
+                        class="form-control"></textarea>
+            </div>
+            <div class="form-group col-md-12">
+              <button type="submit" class="btn btn-secondary">Submit Comment</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--</main>-->
+
+<!--========================================================================================-->
+<!--<main class="post blog-post col-lg-8">-->
+<!--<div class="container">-->
+  <!--<div class="post-single">-->
+    <!--&lt;!&ndash;<div class="post-thumbnail"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>&ndash;&gt;-->
+    <!--<div class="post-details">-->
+
+      <!--<h1 class="post-heading">Diversity in Engineering: The Effect on Questions</h1>-->
+
+      <!--&lt;!&ndash;meta data starts&ndash;&gt;-->
+      <!--<div class="post-meta py-2 d-flex align-items-center flex-column flex-sm-row">-->
+        <!--<a href="#" class="author d-flex align-items-center flex-wrap">-->
+          <!--<div class="avatar mr-2">-->
+            <!--<img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/avatar-1.jpg"-->
+                 <!--alt="..." class=" rounded-circle square-40"></div>-->
+          <!--<div class="title"><span>John Doe</span></div>-->
+        <!--</a>-->
+        <!--<div class="d-flex align-items-center flex-wrap">-->
+          <!--<div class="date"><i class="fa fa-clock"></i> 2 months ago</div>-->
+          <!--<div class="views"><i class="fa fa-eye"></i> 500</div>-->
+          <!--<div class="comments meta-last"><i class="fa fa-comment-o"></i>12</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;meta data ends&ndash;&gt;-->
+
+      <!--<div class="post-body">-->
+        <!--<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+          <!--labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut-->
+          <!--aliquip ex ea commodo consequat.</p>-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+          <!--dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea-->
+          <!--commodo consequat.</p>-->
+        <!--&lt;!&ndash;<p> <img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>&ndash;&gt;-->
+        <!--<h3>Lorem Ipsum Dolor</h3>-->
+        <!--<p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti-->
+          <!--similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti-->
+          <!--accusantium</p>-->
+        <!--<blockquote class="blockquote">-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+            <!--dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>-->
+          <!--<footer class="blockquote-footer">Someone famous in-->
+            <!--<cite title="Source Title">Source Title</cite>-->
+          <!--</footer>-->
+        <!--</blockquote>-->
+        <!--<p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis.-->
+          <!--Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam-->
+          <!--voluptas neque soluta adipisci ad.</p>-->
+      <!--</div>-->
+      <!--<div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#"-->
+                                                                                                        <!--class="tag">#Financial</a><a-->
+        <!--href="#" class="tag">#Economy</a></div>-->
+
+      <!--&lt;!&ndash;navigation starts&ndash;&gt;-->
+      <!--<div class="posts-nav py-4 d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#"-->
+                                                                                                                <!--class="prev-post text-left d-flex align-items-center">-->
+        <!--<div class="icon prev mr-2 d-flex justify-content-center align-items-center">-->
+          <!--<i class="fa fa-angle-left "></i>-->
+        <!--</div>-->
+        <!--<div class="text"><strong class="text-nav">Previous Post </strong>-->
+          <!--<h6 class="nav-title">I Bought a Wedding Dress.</h6>-->
+        <!--</div>-->
+      <!--</a>-->
+        <!--<a href="#" class="next-post text-right d-flex align-items-center justify-content-end">-->
+          <!--<div class="text"><strong class="text-nav">Next Post </strong>-->
+            <!--<h6 class="nav-title">I Bought a Wedding Dress.</h6>-->
+          <!--</div>-->
+          <!--<div class="icon next ml-2 d-flex justify-content-center align-items-center">-->
+            <!--<i class="fa fa-angle-right"> </i></div>-->
+        <!--</a>-->
+      <!--</div>-->
+
+      <!--&lt;!&ndash;navigation ends&ndash;&gt;-->
+      <!--&lt;!&ndash;comments start&ndash;&gt;-->
+      <!--<div class="post-comments">-->
+        <!--<header>-->
+          <!--<h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>-->
+        <!--</header>-->
+        <!--<div class="comment">-->
+          <!--<div class="comment-header d-flex justify-content-between">-->
+            <!--<div class="user d-flex align-items-center">-->
+              <!--<div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."-->
+                                       <!--class="img-fluid square-40 rounded-circle"></div>-->
+              <!--<div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="comment-body">-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+              <!--dolore magna aliqua. Ut enim ad minim veniam.</p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="comment">-->
+          <!--<div class="comment-header d-flex justify-content-between">-->
+            <!--<div class="user d-flex align-items-center">-->
+              <!--<div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."-->
+                                       <!--class="img-fluid rounded-circle square-40"></div>-->
+              <!--<div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="comment-body">-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+              <!--dolore magna aliqua. Ut enim ad minim veniam.</p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="comment">-->
+          <!--<div class="comment-header d-flex justify-content-between">-->
+            <!--<div class="user d-flex align-items-center">-->
+              <!--<div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."-->
+                                       <!--class="img-fluid rounded-circle square-40"></div>-->
+              <!--<div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="comment-body">-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+              <!--dolore magna aliqua. Ut enim ad minim veniam.</p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="add-comment">-->
+        <!--<header>-->
+          <!--<h3 class="h6">Leave a reply</h3>-->
+        <!--</header>-->
+        <!--<form action="#" class="commenting-form">-->
+          <!--<div class="row">-->
+            <!--<div class="form-group col-md-6">-->
+              <!--<input type="text" name="username" id="username" placeholder="Name" class="form-control">-->
+            <!--</div>-->
+            <!--<div class="form-group col-md-6">-->
+              <!--<input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)"-->
+                     <!--class="form-control">-->
+            <!--</div>-->
+            <!--<div class="form-group col-md-12">-->
+              <!--<textarea name="usercomment" id="usercomment" placeholder="Type your comment"-->
+                        <!--class="form-control"></textarea>-->
+            <!--</div>-->
+            <!--<div class="form-group col-md-12">-->
+              <!--<button type="submit" class="btn btn-secondary">Submit Comment</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</main>-->

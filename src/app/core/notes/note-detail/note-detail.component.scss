@@ -1,0 +1,46 @@
+@import "~src/sass/variables";
+@import "~src/sass/mixins";
+
+.post-details{
+  .post-heading{
+    @include typography(remy(40), remy(44), 700 , #444)
+  }
+  .post-meta > .fa, .post-meta > .fa, .fa-bookmark-o{
+    margin-right: remy(10);
+  }
+
+  .post-body > p:not(.lead){//todo: improve this
+    @include typography(remy(16), remy(27), 400, #555);
+  }
+  .post-body>h3{
+    @include typography(remy(28), remy(31), 700, #333);
+  }
+  .post-body > .lead{
+    font-size: remy(21);
+  }
+
+}
+
+.title,.date, comment,.views, .comments,.category{
+  @include typography(remy(13), remy(19), 400, $meta-data-color)
+}
+
+.title::after, .date::after, .views::after {
+  @include saperator();
+}
+
+.prev, .next{
+  border: 1px solid #dddddd;
+  @include square(remy(35));
+  border-radius: 50%;
+}
+
+.text-nav{
+  @include typography(remy(13),remy(20),700, #999)
+}
+
+.nav-title{
+  @include typography(remy(16),remy(20),700, #777)
+}
+
+

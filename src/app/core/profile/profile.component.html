@@ -1,0 +1,108 @@
+<!--personal details-->
+<div *ngIf="(loggeduser$|async).user as user">
+  <div class="row">
+    <div class="col-3 profile-box pt-2  d-flex flex-column align-items-center">
+      <img class="rounded-circle avatar" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bill_Gates_2018.jpg"
+           alt="">
+
+      <div class="d-flex"><p class="pr-1">2.7k</p><span class="text-muted">Reputation</span>
+      </div>
+    </div>
+    <div class="col-9">
+      <h1>{{user.user_name}}</h1>
+      <p>Works at {{user.user_works_at||'not set'}}</p>
+      <div class="d-flex justify-content-between" style="width: 200px">
+        <div>
+          <div class="text-center">{{user.user_notes_count||0}}</div>
+          <div><strong>Notes</strong></div>
+        </div>
+        <div>
+          <div class="text-center">{{user.user_followers_count||0}}</div>
+          <div><strong>Followers</strong></div>
+        </div>
+        <div>
+          <div class="text-center">{{user.user_following_count||0}}</div>
+          <div><strong>Following</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--tags-->
+  <div class="row mt-3">
+    <div class="col-12 p-0 mb-1"><div><strong>Popular Tags</strong></div></div>
+    <div class="col-2 border-theme tag-box">Chandrayaan</div>
+    <div class="col-2 border-theme tag-box">USA</div>
+    <div class="col-2 border-theme tag-box">India</div>
+    <div class="col-2 border-theme tag-box">Donald Trump</div>
+    <div class="col-2 border-theme tag-box">Rivers</div>
+    <div class="col-2 border-theme tag-box">The Hindu</div>
+
+  </div>
+
+
+  <!--setting-->
+  <div class="row mt-3">
+    <div class="col-12 p-0 mb-1"><div><strong>Settings</strong></div></div>
+    <div class="col-3 border-theme setting-box">Change Password</div>
+    <div class="col-3 border-theme setting-box">Change Email</div>
+    <div class="col-3 border-theme setting-box">Change Name</div>
+    <div class="col-3 border-theme setting-box">Get Pro Account</div>
+    <div class="col-3 border-theme setting-box">Make Profile Private</div>
+    <div class="col-3 border-theme setting-box">Delete Account</div>
+  </div>
+</div>
+
+<!--=================================================================-->
+<!--&lt;!&ndash;personal details&ndash;&gt;-->
+<!--<div class="row">-->
+  <!--<div class="col-3 profile-box pt-2  d-flex flex-column align-items-center">-->
+    <!--<img class="rounded-circle avatar" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bill_Gates_2018.jpg"-->
+         <!--alt="">-->
+
+    <!--<div class="d-flex"><p class="pr-1">2.7k</p><span class="text-muted">Reputation</span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-9">-->
+    <!--<h1>Sandeep Gupta</h1>-->
+    <!--<p>Works at IMIMobile</p>-->
+    <!--<div class="d-flex">-->
+      <!--<div class="answer mr-3" style="width: 60px">-->
+        <!--<div class="text-center">20</div>-->
+        <!--<div><strong>Answers</strong></div>-->
+      <!--</div>-->
+      <!--<div class="answer mr-3" style="width: 60px">-->
+        <!--<div class="text-center">20</div>-->
+        <!--<div><strong>Followers</strong></div>-->
+      <!--</div>-->
+      <!--<div class="answer mr-3" style="width: 60px">-->
+        <!--<div class="text-center">20</div>-->
+        <!--<div><strong>Following</strong></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;tags&ndash;&gt;-->
+<!--<div class="row mt-3">-->
+  <!--<div class="col-12 p-0 mb-1"><div><strong>Popular Tags</strong></div></div>-->
+  <!--<div class="col-2 border-theme tag-box">Chandrayaan</div>-->
+  <!--<div class="col-2 border-theme tag-box">USA</div>-->
+  <!--<div class="col-2 border-theme tag-box">India</div>-->
+  <!--<div class="col-2 border-theme tag-box">Donald Trump</div>-->
+  <!--<div class="col-2 border-theme tag-box">Rivers</div>-->
+  <!--<div class="col-2 border-theme tag-box">The Hindu</div>-->
+
+<!--</div>-->
+
+
+<!--&lt;!&ndash;setting&ndash;&gt;-->
+<!--<div class="row mt-3">-->
+  <!--<div class="col-12 p-0 mb-1"><div><strong>Settings</strong></div></div>-->
+  <!--<div class="col-3 border-theme setting-box">Change Password</div>-->
+  <!--<div class="col-3 border-theme setting-box">Change Email</div>-->
+  <!--<div class="col-3 border-theme setting-box">Change Name</div>-->
+  <!--<div class="col-3 border-theme setting-box">Get Pro Account</div>-->
+  <!--<div class="col-3 border-theme setting-box">Make Profile Private</div>-->
+  <!--<div class="col-3 border-theme setting-box">Delete Account</div>-->
+<!--</div>-->

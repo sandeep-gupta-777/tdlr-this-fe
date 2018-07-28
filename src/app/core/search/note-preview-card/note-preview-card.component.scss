@@ -1,0 +1,22 @@
+@import "~src/sass/variables";
+@import "~src/sass/mixins";
+
+.title,.date, comment, .comments,.category{
+  @include typography(remy(13), remy(19), 400 , $meta-data-color)
+}
+
+.category > a{
+  font-weight: 700;
+}
+
+.avatar{
+  @include square(remy(32));
+}
+
+.fa{
+  margin-right: 10px;
+}
+
+.title::after, footer>.date::after {
+  @include saperator();
+}

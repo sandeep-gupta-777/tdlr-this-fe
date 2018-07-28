@@ -1,0 +1,35 @@
+@mixin saperator(){
+  content: '|';
+  display: inline-block;
+  margin: 0 7px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+@mixin typography($size, $line-height, $weight, $color){
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+  font-family: "Open Sans", sans-serif;
+}
+
+@mixin hide-borders{
+  border: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+
+@mixin square($size){
+  height: $size;
+  width: $size;
+}
+
+@function remy($pxsize) {
+  @return ($pxsize/16)+rem;
+}
+
+
