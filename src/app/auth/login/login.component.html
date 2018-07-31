@@ -1,9 +1,10 @@
 <div class="container mt-2">
   <div class="row d-flex justify-content-center">
     <div class="col-5 border-theme p-5 pb-1">
-      <h4 class="d-flex justify-content-center"><h4>Login</h4></h4>
-      <form class="mb-2" #loginForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
+      {{isItSignUpPage}}
+      <h4 class="d-flex justify-content-center"><h4>{{isItSignUpPage?"SignUp":"Login"}}</h4></h4>
+      <form class="mb-2" #loginForm="ngForm" (ngSubmit)="tryLogin()">
+        <div class="form-group" *ngIf="isItSignUpPage">
           <label for="exampleInputName">Full Name</label>
           <input type="email" ngModel name="user_name" class="form-control" id="exampleInputName" placeholder="Enter name">
         </div>

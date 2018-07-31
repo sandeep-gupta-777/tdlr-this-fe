@@ -1,6 +1,6 @@
 <!--<main class="post blog-post col-lg-8">-->
 <!---->
-<div class="container" *ngIf="(note$|async)?.body as note">
+<div class="container" *ngIf="(note$|async) as note">
   <div class="post-single">
     <!--<div class="post-thumbnail"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>-->
     <div class="post-details">
@@ -13,23 +13,31 @@
           <div class="avatar mr-2">
             <img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/avatar-1.jpg"
                  alt="..." class=" rounded-circle square-40"></div>
-          <div class="title"><span>{{note.note_author_name}}</span></div>
+          <div class="title"><a [routerLink]="['/core', 'profile', note.note_author_id]">{{note.note_author_name}}</a></div>
         </a>
         <!---->
         <div class="d-flex align-items-center flex-wrap">
           <div class="date"><i class="fa fa-clock"></i>{{note.note_created|timeAgo}}</div>
           <div class="views"><i class="fa fa-eye"></i> 500</div>
-          <div class="comments meta-last"><i class="fa fa-comment-o"></i>12</div>
+          <div class="comments meta-last"><i class="fa fa-comment-o"></i>{{note.note_comments.length}}</div>
+          <div class="hearts meta-last" (click)="toggleLike()">
+            <i class="fa " [ngClass]="{'fa-heart-o':!hasUserLikedNote,'fa-heart':hasUserLikedNote,'color-red':hasUserLikedNote}" ></i>12</div>
         </div>
       </div>
       <!--meta data ends-->
 
-      <div class="post-body my-2" [innerHtml]="note.note_body_html">
+      <div class="post-body my-2" [innerHtml]="note.note_body_html"></div>
 
+      <div class="ribbon d-flex justify-content-end p-1 my-2">
+        <i class="fa fa-clock-o mx-1"></i>
+        <i class="fa fa-bookmark-o mx-1"></i>
+        <i class="fa fa-heart-o mx-1" [ngClass]="{'fa-heart-o':!hasUserLikedNote,'fa-heart':hasUserLikedNote,'color-red':hasUserLikedNote}" (click)="toggleLike()"></i>
       </div>
+
       <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#"
                                                                                                         class="tag">#Financial</a><a
         href="#" class="tag">#Economy</a></div>
+
 
       <!--navigation starts-->
       <div class="posts-nav py-4 d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#"
@@ -52,73 +60,31 @@
 
       <!--navigation ends-->
       <!--comments start-->
-      <div class="post-comments">
-        <header>
-          <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
-        </header>
-        <div class="comment">
-          <div class="comment-header d-flex justify-content-between">
-            <div class="user d-flex align-items-center">
-              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
-                                            class="img-fluid square-40 rounded-circle"></div>
-              <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
-            </div>
-          </div>
-          <div class="comment-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam.</p>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-header d-flex justify-content-between">
-            <div class="user d-flex align-items-center">
-              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
-                                            class="img-fluid rounded-circle square-40"></div>
-              <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-            </div>
-          </div>
-          <div class="comment-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam.</p>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-header d-flex justify-content-between">
-            <div class="user d-flex align-items-center">
-              <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
-                                            class="img-fluid rounded-circle square-40"></div>
-              <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-            </div>
-          </div>
-          <div class="comment-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam.</p>
-          </div>
-        </div>
-      </div>
-      <div class="add-comment">
-        <header>
-          <h3 class="h6">Leave a reply</h3>
-        </header>
-        <form action="#" class="commenting-form">
-          <div class="row">
-            <div class="form-group col-md-6">
-              <input type="text" name="username" id="username" placeholder="Name" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-              <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)"
-                     class="form-control">
-            </div>
-            <div class="form-group col-md-12">
-              <textarea name="usercomment" id="usercomment" placeholder="Type your comment"
-                        class="form-control"></textarea>
-            </div>
-            <div class="form-group col-md-12">
-              <button type="submit" class="btn btn-secondary">Submit Comment</button>
-            </div>
-          </div>
-        </form>
-      </div>
+      <app-comment-list [commentList]="note.note_comments" ></app-comment-list>
+      <!--<div class="post-comments">-->
+        <!--<header>-->
+          <!--<h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>-->
+        <!--</header>-->
+        <!--<div class="comment">-->
+          <!--<div class="comment-header d-flex justify-content-between">-->
+            <!--<div class="user d-flex align-items-center">-->
+              <!--<div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."-->
+                                            <!--class="img-fluid square-40 rounded-circle"></div>-->
+              <!--<div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="comment-body">-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et-->
+              <!--dolore magna aliqua. Ut enim ad minim veniam.</p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="add-comment">-->
+        <!--<header>-->
+          <!--<h3 class="h6">Leave a reply</h3>-->
+        <!--</header>-->
+        <!--<app-comment-list></app-comment-list>-->
+      <!--</div>-->
     </div>
   </div>
 </div>

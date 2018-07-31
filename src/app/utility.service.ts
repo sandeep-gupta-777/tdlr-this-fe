@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
 
-  constructor() { }
+  constructor(
+    private toastr: ToastrService,
+  ) { }
   timeSince(date) {
 
     var seconds = Math.floor((<any>new Date() - date) / 1000);
@@ -32,5 +35,8 @@ export class UtilityService {
       return interval + " minutes";
     }
     return Math.floor(seconds) + " seconds";
+  }
+  showErrorToaster(error){
+    this.toastr.error(error.message,error.name,{positionClass:'toast-bottom-left',timeOut:2000})
   }
 }

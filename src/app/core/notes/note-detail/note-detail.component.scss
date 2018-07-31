@@ -21,11 +21,11 @@
 
 }
 
-.title,.date, comment,.views, .comments,.category{
+.title,.date, comment,.views, .comments,.category, .hearts{
   @include typography(remy(13), remy(19), 400, $meta-data-color)
 }
 
-.title::after, .date::after, .views::after {
+.title::after, .date::after, .views::after, .comments::after {
   @include saperator();
 }
 
@@ -43,4 +43,19 @@
   @include typography(remy(16),remy(20),700, #777)
 }
 
+.fa{
+  //@include typography(remy(13), remy(19), 400, $meta-data-color)
+  cursor: pointer;
+  padding-right: 2px;
+}
 
+.ribbon{
+  .fa{
+    color: $meta-data-color;
+    font-size: 15px;
+  }
+}
+
+.color-red{
+  color: lawngreen !important;
+}

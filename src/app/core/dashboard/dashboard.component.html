@@ -14,11 +14,8 @@
 </div>
 
 <div class="row">
-  <div class="col-12">
-    <app-note-recommendations-details></app-note-recommendations-details>
-    <app-note-recommendations-details></app-note-recommendations-details>
-    <app-note-recommendations-details></app-note-recommendations-details>
-    <app-note-recommendations-details></app-note-recommendations-details>
+  <div class="col-12" *ngFor="let note of noteList">
+    <app-note-recommendations-details [note]="note"></app-note-recommendations-details>
   </div>
 </div>
 

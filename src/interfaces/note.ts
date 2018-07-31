@@ -1,3 +1,5 @@
+import {IComment} from './comment';
+
 export interface INote{
   _id?:string,
   note_title?: string,
@@ -9,4 +11,6 @@ export interface INote{
   note_author_name?:string,
   note_author_id?:string,
   note_author_avatar_url?:string,
+  note_comments?: IComment[],
+  note_liked_user_ids?:string[]
 }

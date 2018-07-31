@@ -12,6 +12,11 @@ import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Route, RouterModule} from '@angular/router';
 import {NotFoundComponent} from './core/not-found/not-found.component';
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule
+} from 'ngx-toastr';
 import {LoginComponent} from './auth/login/login.component';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {DashboardComponent} from './core/dashboard/dashboard.component';
@@ -37,14 +42,20 @@ import {AuthStateReducer} from './auth/ngxs/auth.state';
 import {persistPlugin} from './ngxs/ngxs.plugin';
 import {NgxsStoragePluginModule} from '@ngxs/storage-plugin';
 import { TimeAgoPipe } from './time-ago.pipe';
+import {AuthGaurdService} from './auth-gaurd.service';
+import { NewCommentComponent } from './core/comment/new-comment/new-comment.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {NoteStateReducer} from './notes/ngxs/notes.state';
 
 const routes: Route[] = [
 
   {
-    path: 'core', component: CoreWrapperComponent, children: [
+    path: 'core',
+    canActivate: [AuthGaurdService],
+    canActivateChild: [AuthGaurdService],  component: CoreWrapperComponent, children: [
       {path: 'create', component: CreateNewNoteComponent},
       {path: 'profile', component: ProfileComponent},
+      {path: 'profile/:_id', component: ProfileComponent},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'note/:_id', component: NoteDetailComponent},
       {path: 'search', component: NotePreviewListComponent},
@@ -52,7 +63,8 @@ const routes: Route[] = [
   },
   {
     path: 'auth', component: AuthWrapperComponent, children: [
-      {path: 'login', component: LoginComponent},
+      {path: 'login', component: LoginComponent, data:{name:"LOGIN"}},
+      {path: 'signup', component: LoginComponent, data:{name:"SIGNUP"}},
     ]
   },
   {path: '', component: NotFoundComponent}
@@ -83,7 +95,8 @@ const routes: Route[] = [
     ProfileComponent,
     CoreWrapperComponent,
     AuthWrapperComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    NewCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +112,8 @@ const routes: Route[] = [
     NgxsStoragePluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
+    ToastrModule.forRoot(), // ToastrModule added
+    BrowserAnimationsModule//// ToastrModule requirement
   ],
   providers: [ConstantService],
   bootstrap: [AppComponent]

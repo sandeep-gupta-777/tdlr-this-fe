@@ -1,3 +1,25 @@
-<p>
-  comment-list works!
-</p>
+<div class="post-comments">
+  <header>
+    <h3 class="h6">Post Comments<span class="no-of-comments">({{commentList.length}})</span></h3>
+  </header>
+  <div class="comment" *ngFor="let comment of commentList">
+    <div class="comment-header d-flex justify-content-between">
+      <div class="user d-flex align-items-center">
+        <div class="avatar mr-2"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/user.svg" alt="..."
+                                      class="img-fluid square-40 rounded-circle"></div>
+        <div class="title"><strong>{{comment.comment_author_name}}</strong><span class="date pl-1">{{comment.comment_created|date}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="comment-body">
+      <p>{{comment.comment_body_text}}</p>
+    </div>
+  </div>
+</div>
+<div class="add-comment">
+  <header>
+    <h3 class="h6">Leave a reply</h3>
+  </header>
+  <app-new-comment (createCommentEvent)="createComment($event)"></app-new-comment>
+
+</div>

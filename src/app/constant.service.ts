@@ -35,13 +35,25 @@ export class ConstantService {
   getNoteUrl(_id: string) {
     return this.BACKEND_URL + `read/note/${_id}`;
   }
-
   getLoginUrl() {
     return this.BACKEND_URL + "login";
   }
-
-
-
-
-
+  getSignupUrl() {
+    return this.BACKEND_URL + "signup";
+  }
+  getNewCommentCreationUrl(post_id) {
+    return this.BACKEND_URL + `create/comment?post_id=${post_id}`;
+  }
+  getCommentListUrl(reqObj:{post_id:string,page:number, limit:number}) {
+    return this.BACKEND_URL + `read/comments?post_id=${reqObj.post_id}&page=${reqObj.page}&limit=${reqObj.limit}`;
+  }
+  getUserUrl(_id:string){
+    return this.BACKEND_URL + `read/user/${_id}`;
+  }
+  getNotesCreatedByUserUrl(_id:string){
+    return this.BACKEND_URL + `read/notes?note_author_id=${_id}`;
+  }
+  getToggleLikeUrl(note_id:string, user_id:string){
+    return this.BACKEND_URL + `togglelike?note_id=${note_id}&note_author_id=${user_id}`;
+  }
 }

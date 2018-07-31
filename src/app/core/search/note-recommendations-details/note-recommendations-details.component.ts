@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {INote} from '../../../../interfaces/note';
 
 @Component({
   selector: 'app-note-recommendations-details',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteRecommendationsDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() note: INote;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    debugger;
   }
 
 }

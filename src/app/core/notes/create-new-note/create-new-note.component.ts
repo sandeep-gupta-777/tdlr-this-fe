@@ -30,17 +30,18 @@ export class CreateNewNoteComponent implements OnInit {
     console.log(url);
 
     this.loggeduser$.subscribe(({user})=>{
+      debugger;
       let note: INote = {
         note_title: this.title,
         note_body_html:this.htmlContent,
         note_author_id:user._id,
         note_author_name:user.user_name,
         note_author_avatar_url:user.user_avatar_url,
-        note_created:Date.now()
+        note_created:Date.now(),
+        note_comments:[]
       };
       this.serverService.makePostReq<{body:INote}>({url,body:note})
         .subscribe((value)=>{
-          debugger;
           this.router.navigate(['/core','note', value.body._id]);
         })
     })
