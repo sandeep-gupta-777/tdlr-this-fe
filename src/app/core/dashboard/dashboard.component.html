@@ -5,10 +5,10 @@
 <div class="row">
   <div class="col-12">
     <nav class="nav">
-      <a class="nav-link active" href="#">Notes</a>
-      <a class="nav-link" href="#">Likes</a>
-      <a class="nav-link" href="#">Comments</a>
-      <a class="nav-link disabled" href="#">Read later</a>
+      <a class="nav-link active"  [ngClass]="{active:activeTab==='Notes'}" (click)="tabChanged('Notes')">Notes</a>
+      <a class="nav-link" [ngClass]="{active:activeTab==='Likes'}" (click)="tabChanged('Likes')">Likes</a>
+      <a class="nav-link" [ngClass]="{active:activeTab==='Comments'}" (click)="tabChanged('Comments')">Comments</a>
+      <a class="nav-link disabled" [ngClass]="{active:activeTab==='Read'}" (click)="tabChanged('Read')">Read later</a>
     </nav>
   </div>
 </div>

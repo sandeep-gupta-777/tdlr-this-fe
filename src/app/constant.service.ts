@@ -53,7 +53,14 @@ export class ConstantService {
   getNotesCreatedByUserUrl(_id:string){
     return this.BACKEND_URL + `read/notes?note_author_id=${_id}`;
   }
+  getNotesLikedByUser(_id:string){
+    return this.BACKEND_URL + `read/notes?note_liked_user_ids=${_id}`;
+  }
+  getNotesCommentedOnByUser(_id:string){
+    return this.BACKEND_URL + `read/notes?note_commented_user_ids=${_id}`;
+  }
   getToggleLikeUrl(note_id:string, user_id:string){
     return this.BACKEND_URL + `togglelike?note_id=${note_id}&note_author_id=${user_id}`;
   }
 }
+//

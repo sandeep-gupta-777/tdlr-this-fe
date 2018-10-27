@@ -14,7 +14,6 @@ export class NoteRecommendationsDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
   }
 
 }

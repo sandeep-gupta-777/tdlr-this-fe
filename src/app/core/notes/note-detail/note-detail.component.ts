@@ -35,7 +35,6 @@ export class NoteDetailComponent implements OnInit {
       .do((note)=>{
         this.note_id = note._id;
         this.hasUserLikedNote = note.note_liked_user_ids.find((value)=>{
-          debugger;
           return value === this.user_id;
         })
       })

@@ -30,7 +30,6 @@ export class CreateNewNoteComponent implements OnInit {
     console.log(url);
 
     this.loggeduser$.subscribe(({user})=>{
-      debugger;
       let note: INote = {
         note_title: this.title,
         note_body_html:this.htmlContent,

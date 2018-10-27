@@ -41,6 +41,7 @@ export class NewCommentComponent implements OnInit {
     let body: IComment = {
       ...formData,
       comment_post_id: this.post_id,
+      comment_author_id:this.loggeduser._id,
       comment_author_name: this.loggeduser.user_name,
       comment_author_avatar_url: this.loggeduser.user_avatar_url,
       comment_created: Date.now(),
