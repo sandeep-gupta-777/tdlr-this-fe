@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Select, Store} from '@ngxs/store';
+import {Observable} from 'rxjs';
+import {IAuthState} from '../../auth/ngxs/auth.state';
+import {ResetAuthToDefaultState, SetUserAction} from '../../auth/ngxs/auth.action';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +13,24 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  @Select() loggeduser$: Observable<IAuthState>;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private store: Store) {
+  }
 
   ngOnInit() {
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate(['/auth','login']);
+  async logout() {
+    await this.authService.logout()
+    this.store.dispatch([
+      new ResetAuthToDefaultState()
+    ]).subscribe(() => {
+      this.router.navigate(['/auth', 'login']);
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 import {Action, State, StateContext} from '@ngxs/store';
-import {SetUserAction} from './auth.action';
+import {ResetAuthToDefaultState, SetUserAction} from './auth.action';
 import {ConstantService} from '../../constant.service';
 import {IUser} from '../../../interfaces/user';
 
@@ -21,5 +21,10 @@ export class AuthStateReducer {
   @Action(SetUserAction)
   setUser({patchState, setState, getState,dispatch}:StateContext<IAuthState>, payload : SetUserAction){
     patchState({user:payload.payload.user});
+  }
+
+  @Action(ResetAuthToDefaultState)
+  resetAuthToDefaultState({patchState, setState, getState,dispatch}:StateContext<IAuthState>){
+    patchState({user:null});
   }
 }

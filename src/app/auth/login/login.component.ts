@@ -6,6 +6,8 @@ import {ServerService} from '../../server.service';
 import {ConstantService} from '../../constant.service';
 import {IUser} from '../../../interfaces/user';
 import {SetUserAction} from '../ngxs/auth.action';
+import {AuthService} from '../auth.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private serverService: ServerService,
     private constantsService: ConstantService,
+    public authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
@@ -25,6 +28,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.isItSignUpPage = this.activatedRoute.snapshot.firstChild.data.name ==='SIGNUP';
+    this.authService.uid$
+      .subscribe((authState) => {
+        if(!authState || !authState.uid) return;
+
+        this.store.dispatch([
+          new SetUserAction({user:{
+            uid:authState.uid,
+              first_name:authState.displayName,
+              email:authState.email,
+              phoneNumber:authState.phoneNumber,
+              isAnonymous:authState.isAnonymous,
+              photoURL:authState.photoURL,
+
+          }})
+        ]);
+        this.router.navigate(['/core/dashboard']);
+      })
   }
 
   trySignup(){
@@ -39,6 +59,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/core', 'profile']);
         }
       )
+
   }
 
   tryLogin(){

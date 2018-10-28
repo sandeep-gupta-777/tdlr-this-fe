@@ -1,11 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './core/header/header.component';
 import {FooterComponent} from './core/footer/footer.component';
-// import { PostListComponent } from './post/post-list/post-list.component';
-// import { PostDetailComponent } from './post/post-detail/post-detail.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
 import {NgxEditorModule} from 'ngx-editor';
 import {FormsModule} from '@angular/forms';
@@ -41,10 +41,13 @@ import {AuthWrapperComponent} from './auth/auth-wrapper/auth-wrapper.component';
 import {AuthStateReducer} from './auth/ngxs/auth.state';
 import {persistPlugin} from './ngxs/ngxs.plugin';
 import {NgxsStoragePluginModule} from '@ngxs/storage-plugin';
-import { TimeAgoPipe } from './time-ago.pipe';
+import {TimeAgoPipe} from './time-ago.pipe';
 import {AuthGaurdService} from './auth-gaurd.service';
-import { NewCommentComponent } from './core/comment/new-comment/new-comment.component';
+import {NewCommentComponent} from './core/comment/new-comment/new-comment.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {environment} from '../environments/environment';
+import {LoginGaurdService} from './login-gaurd.service';
+import {NoteListStateReducer} from './core/notes/notes.state';
 // import {NoteStateReducer} from './notes/ngxs/notes.state';
 
 const routes: Route[] = [
@@ -52,7 +55,7 @@ const routes: Route[] = [
   {
     path: 'core',
     canActivate: [AuthGaurdService],
-    canActivateChild: [AuthGaurdService],  component: CoreWrapperComponent, children: [
+    canActivateChild: [AuthGaurdService], component: CoreWrapperComponent, children: [
       {path: 'create', component: CreateNewNoteComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'profile/:_id', component: ProfileComponent},
@@ -62,12 +65,14 @@ const routes: Route[] = [
     ]
   },
   {
-    path: 'auth', component: AuthWrapperComponent, children: [
-      {path: 'login', component: LoginComponent, data:{name:"LOGIN"}},
-      {path: 'signup', component: LoginComponent, data:{name:"SIGNUP"}},
+    path: 'auth', component: AuthWrapperComponent,
+    canActivate: [LoginGaurdService],
+    children: [
+      {path: 'login', component: LoginComponent, data: {name: 'LOGIN'}},
+      {path: 'signup', component: LoginComponent, data: {name: 'SIGNUP'}},
     ]
   },
-  {path: '', component: NotFoundComponent}
+  {path: '', redirectTo:'auth/login', pathMatch:'full'}
 
 ];
 
@@ -100,6 +105,9 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firestore, 'fs1-prod'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     NgxEditorModule,
     BsDropdownModule.forRoot(),
     FormsModule,
@@ -107,6 +115,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes),
     NgxsModule.forRoot([
       NoteStateReducer,
+      NoteListStateReducer,
       AuthStateReducer
     ]),
     NgxsStoragePluginModule.forRoot(),

@@ -6,3 +6,10 @@ export class SetUserAction {
 
   }
 }
+
+export class ResetAuthToDefaultState{
+  static readonly type = '[login] reset user';
+  constructor(){
+  }
+}
+

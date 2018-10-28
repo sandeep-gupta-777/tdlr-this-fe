@@ -1,3 +1,4 @@
+<p>{{authService.uid|async}}</p>
 <div class="container mt-2">
   <div class="row d-flex justify-content-center">
     <div class="col-5 border-theme p-5 pb-1">
@@ -29,7 +30,7 @@
 
       <div class="social d-flex justify-content-center">
 
-        <button class="btn btn-theme-secondary-outline mr-2 text-danger">Google</button>
+        <button class="btn btn-theme-secondary-outline mr-2 text-danger" (click)="authService.login()">Google</button>
         <button class="btn btn-theme-primary-outline text-primary">Facebook</button>
 
       </div>

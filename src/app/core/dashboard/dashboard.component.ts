@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   noteList:INote[];
   @Select() loggeduser$: Observable<IAuthState>;
   activeTab:string = "Notes";
-  user_id:string;
+  uid:string;
   constructor(
     private serverService: ServerService,
     private constantService: ConstantService,
@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loggeduser$.subscribe((value)=>{
-      this.user_id=value.user._id;
-      this.tabChanged(this.activeTab);;
+      this.uid=value.user.uid;
+      this.tabChanged(this.activeTab);
     });
     this.activeTab = this.activatedRoute.snapshot.queryParamMap.get('tab')||'Notes';
   }
@@ -38,26 +38,26 @@ export class DashboardComponent implements OnInit {
   tabChanged(activeTab:string){
     this.activeTab = activeTab;
     if(activeTab==='Notes'){
-      let url = this.constantService.getNotesCreatedByUserUrl(this.user_id);
+      let url = this.constantService.getNotesCreatedByUserUrl(this.uid);
       this.serverService.makeGetReq<INote[]>({url})
         .subscribe((value) => {
           this.noteList = value.body;
         });
     }else if(activeTab==='Likes'){
-      debugger;
-      let url = this.constantService.getNotesLikedByUser(this.user_id);
+
+      let url = this.constantService.getNotesLikedByUser(this.uid);
       this.serverService.makeGetReq<INote[]>({url})
         .subscribe((value) => {
           this.noteList = value.body;
         });
     }else if(activeTab==='Comments'){
-      let url = this.constantService.getNotesCommentedOnByUser(this.user_id);
+      let url = this.constantService.getNotesCommentedOnByUser(this.uid);
       this.serverService.makeGetReq<INote[]>({url})
         .subscribe((value) => {
           this.noteList = value.body;
         });
     }else if(activeTab==='Read'){
-      let url = this.constantService.getNotesCreatedByUserUrl(this.user_id);
+      let url = this.constantService.getNotesCreatedByUserUrl(this.uid);
       this.serverService.makeGetReq<INote[]>({url})
         .subscribe((value) => {
           this.noteList = value.body;

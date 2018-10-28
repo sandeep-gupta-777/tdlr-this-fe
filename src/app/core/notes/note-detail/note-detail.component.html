@@ -1,6 +1,6 @@
 <!--<main class="post blog-post col-lg-8">-->
 <!---->
-<div class="container" *ngIf="(note$|async) as note">
+<div class="container" *ngIf="note">
   <div class="post-single">
     <!--<div class="post-thumbnail"><img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>-->
     <div class="post-details">
@@ -11,9 +11,9 @@
       <div class="post-meta py-2 d-flex align-items-center flex-column flex-sm-row">
         <a href="#" class="author d-flex align-items-center flex-wrap">
           <div class="avatar mr-2">
-            <img src="https://d19m59y37dris4.cloudfront.net/blog/1-2/img/avatar-1.jpg"
+            <img [src]="note.note_author_photoURL"
                  alt="..." class=" rounded-circle square-40"></div>
-          <div class="title"><a [routerLink]="['/core', 'profile', note.note_author_id]">{{note.note_author_name}}</a></div>
+          <div class="title"><a [routerLink]="['/core', 'profile', note.note_author_uid]">{{note.note_author_name}}</a></div>
         </a>
         <!---->
         <div class="d-flex align-items-center flex-wrap">
@@ -60,7 +60,7 @@
 
       <!--navigation ends-->
       <!--comments start-->
-      <app-comment-list [commentList]="note.note_comments" ></app-comment-list>
+      <app-comment-list [commentList]="note.note_comments" (newCommentCreated)="createNewComment($event)"  ></app-comment-list>
       <!--<div class="post-comments">-->
         <!--<header>-->
           <!--<h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>-->

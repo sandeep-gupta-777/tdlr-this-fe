@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ServerService} from '../../../server.service';
 import {ConstantService} from '../../../constant.service';
@@ -19,6 +19,7 @@ export class CommentListComponent implements OnInit {
   @Select() loggeduser$: Observable<IAuthState>;
   @ViewChild(NewCommentComponent) newCommentComponent:NewCommentComponent;
   @Input() commentList: IComment[];
+  @Output('newCommentCreated') newCommentCreated  = new EventEmitter();
   loggeduser: IUser;
   post_id: string;
 
@@ -37,12 +38,13 @@ export class CommentListComponent implements OnInit {
   }
 
   createComment(body) {
-    let url = this.constantService.getNewCommentCreationUrl(this.post_id);
-    this.serverService.makePutReq({url, body})
-      .subscribe((value) => {
-        this.commentList.push(body);
-        this.newCommentComponent.f.form.reset();
-      });
+    this.newCommentCreated.emit(body);
+    // let url = this.constantService.getNewCommentCreationUrl(this.post_id);
+    // this.serverService.makePutReq({url, body})
+    //   .subscribe((value) => {
+    //     this.commentList.push(body);
+    //     this.newCommentComponent.f.form.reset();
+    //   });
   }
 
 
